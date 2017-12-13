@@ -1,0 +1,4 @@
+iptables:
+  pkg: iptables
+  config: '/etc/sysconfig/iptables'
+  service: iptables
