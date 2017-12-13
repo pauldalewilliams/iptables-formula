@@ -20,10 +20,10 @@ iptables:
     # protocol
     p: tcp
 
-    # source port
+    # source port or service name
     sport: 22
 
-    # destination port
+    # destination port or service name
     dport: 22
 
     # jump
