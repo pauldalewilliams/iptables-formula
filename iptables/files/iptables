@@ -15,7 +15,7 @@
 # Accept inbound traffic for already established connections
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
-{%- for k, v in salt['pillar.get']('iptables', {}).items() %}
+{% for k, v in salt['pillar.get']('iptables', {}).items() %}
 {%- set comment = v.comment|default(k) %}
 -A INPUT {%- if 'i' in v %} -i {{ v.i }}{%- endif %}
 {%- if 'o' in v %} -o {{ v.o }}{% endif %}
