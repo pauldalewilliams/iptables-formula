@@ -1,3 +1,51 @@
-template:
-  lookup:
-    master: template-master
+iptables:
+  # Enter a unique name for each rule.
+  # This name will be used in the comment parameter
+  # if you do not define a value for comment.
+  # Parameter names match the short flags for the iptables command.
+
+  example_rule_to_show_all_parameters:
+    # in interface
+    i: eth0
+
+    # out interface
+    o: eth0
+
+    # source
+    s: 10.0.0.0/8
+
+    # destination
+    d: 10.0.0.0/8
+
+    # protocol
+    p: tcp
+
+    # source port
+    sport: 22
+
+    # destination port
+    dport: 22
+
+    # jump
+    j: ACCEPT
+
+    # comment (optional, but uses name if undefined)
+    comment: This is an example comment.
+
+
+  # Sample rules
+
+  ssh_access_for_a_subnet:
+    s: 10.8.1.0/24
+    p: tcp
+    dport: 22
+    j: ACCEPT
+    comment: SSH for IT admins
+
+  http_access:
+    i: eth0
+    p: tcp
+    dport: 80
+    j: ACCEPT
+    comment: Accept all incoming packets to tcp port 80
+    

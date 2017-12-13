@@ -1,9 +1,9 @@
 ================
-template-formula
+iptables-formula
 ================
 
-A saltstack formula that is empty. It has dummy content to help with a quick
-start on a new formula.
+A saltstack formula for iptables.  This formula manages iptables through the use of files
+instead of the salt modules in order to make it idempotent.
 
 .. note::
 
@@ -16,7 +16,7 @@ Available states
 .. contents::
     :local:
 
-``template``
+``iptables``
 ------------
 
-Installs the template package, and starts the associated template service.
+Installs the iptables package, starts the associated iptables service, and configures the rules.
