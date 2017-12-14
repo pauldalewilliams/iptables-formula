@@ -23,7 +23,7 @@
 {%- if 'o' in v %} -o {{ v.o }}{% endif %}
 {%- if 's' in v %} -s {{ v.s|join(',') }}{% endif %}
 {%- if 'd' in v %} -d {{ v.d|join(',') }}{% endif %}
-{%- if 'p' in v %} -p {{ v.p }}{% endif %}
+{%- if 'p' in v %} -p {{ proto }}{% endif %}
 {%- if 'sport' in v %} --sport {{ v.sport }}{% endif %}
 {%- if 'dport' in v %} --dport {{ v.dport }} {% endif -%}
 -j {{ jump }} -m comment --comment "{{ comment }}"
