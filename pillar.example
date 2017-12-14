@@ -12,12 +12,14 @@ iptables:
     o: eth0
 
     # source
-    s: 10.0.0.0/8
+    s:
+      - 10.0.0.0/8
 
     # destination
-    d: 10.0.0.0/8
+    d:
+      - 10.0.0.0/8
 
-    # protocol
+    # protocol (optional, defaults to tcp, set to '' if unneeded)
     p: tcp
 
     # source port or service name
@@ -26,7 +28,7 @@ iptables:
     # destination port or service name
     dport: 22
 
-    # jump
+    # jump (optional, defaults to ACCEPT)
     j: ACCEPT
 
     # comment (optional, but uses name if undefined)
@@ -36,16 +38,13 @@ iptables:
   # Sample rules
 
   ssh_access_for_a_subnet:
-    s: 10.8.1.0/24
-    p: tcp
+    s:
+      - 10.8.1.0/24
     dport: 22
-    j: ACCEPT
     comment: SSH for IT admins
 
   http_access:
     i: eth0
-    p: tcp
     dport: 80
-    j: ACCEPT
     comment: Accept all incoming packets to tcp port 80
     
