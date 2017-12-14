@@ -17,14 +17,16 @@
 
 {% for k, v in salt['pillar.get']('iptables', {}).items() %}
 {%- set comment = v.comment|default(k) %}
+{%- set proto = v.p|default('tcp') %}
+{%- set jump = v.j|default('ACCEPT') %}
 -A INPUT {%- if 'i' in v %} -i {{ v.i }}{%- endif %}
 {%- if 'o' in v %} -o {{ v.o }}{% endif %}
-{%- if 's' in v %} -s {{ v.s }}{% endif %}
-{%- if 'd' in v %} -d {{ v.d }}{% endif %}
+{%- if 's' in v %} -s {{ v.s|join(',') }}{% endif %}
+{%- if 'd' in v %} -d {{ v.d|join(',') }}{% endif %}
 {%- if 'p' in v %} -p {{ v.p }}{% endif %}
 {%- if 'sport' in v %} --sport {{ v.sport }}{% endif %}
-{%- if 'dport' in v %} --dport {{ v.dport }}{% endif %}
-{%- if 'j' in v %} -j {{ v.j }}{% endif %} -m comment --comment "{{ comment }}"
+{%- if 'dport' in v %} --dport {{ v.dport }} {% endif -%}
+-j {{ jump }} -m comment --comment "{{ comment }}"
 {%- endfor %}
 
 COMMIT
