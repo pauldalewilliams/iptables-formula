@@ -26,7 +26,7 @@
 {%- if proto %} -p {{ proto }}{% endif %}
 {%- if 'sport' in v %} --sport {{ v.sport }}{% endif %}
 {%- if 'dport' in v %} --dport {{ v.dport }} {% endif -%}
-{%- if 'icmp-type' in v %} --icmp-type {{v.icmp-type}} {% endif -%}
+{%- if 'icmp-type' in v %} --icmp-type {{v['icmp-type']}} {% endif -%}
 -j {{ jump }} -m comment --comment "{{ comment }}"
 {%- endfor %}
 
